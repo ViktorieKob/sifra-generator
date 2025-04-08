@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <title>Básnička</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      padding: 30px;
+      margin: auto;
+      text-align: center;
+    }
+
+    header {
+      background-color: #8B0000;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 25px;
+    }
+
+    header nav {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+    }
+
+    header nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 20px;
+      padding: 6px 12px;
+      border-radius: 5px;
+    }
+
+    header nav a:hover {
+      background-color: #a80000;
+    }
+
+    .top-buttons {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    button {
+      background-color: #8B0000;
+      color: white;
+      border: none;
+      padding: 8px 18px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin: 4px;
+    }
+
+    button:hover {
+      background-color: #a80000;
+    }
+
+    h1 {
+      color: #8B0000;
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 25px;
+    }
+
+    .poem-wrapper {
+      display: flex;
+      justify-content: center;
+    }
+
+    .poem {
+      font-size: 18px;
+      font-family: 'Georgia', serif;
+      line-height: 1.35;
+      white-space: pre-wrap;
+      max-width: 600px;
+      text-align: left;
+    }
+
+    @media print {
+      header, .top-buttons {
+        display: none;
+      }
+
+      body {
+        padding: 10mm;
+      }
+
+      h1 {
+        font-size: 28px;
+        margin-bottom: 20px;
+      }
+
+      .poem {
+        font-size: 16px;
+        line-height: 1.25;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a href="index.html">Šifrovač</a>
+      <a href="legenda.html">Legenda</a>
+      <a href="ostatni.html">Ostatní</a>
+      <a href="karticky.html">Kartičky</a>
+      <a href="basnicka.html">Básnička</a>
+    </nav>
+  </header>
+
+  <div class="top-buttons">
+    <button onclick="window.print()">Tisk</button>
+  </div>
+
+  <h1>Básnička pro Dévínku</h1>
+
+  <div class="poem-wrapper">
+    <div class="poem">
+Maruška, Sylvinka, Linduška, Stázi,<br>
+čtyři srdíčka teď spolu zazáří.<br>
+V ručičkách se chytneme,<br>
+kouzlo spolu řekneme:<br><br>
+
+„Čtyři srdce spojíme,<br>
+kouzlem tebe změníme.<br>
+Křídla dáme, sílu též,<br>
+Dévínko, teď leť a běž!“<br><br>
+
+Obr spí, nic neslyší,<br>
+ptáček letí přes les tiší.<br><br>
+
+Princezna je volná teď,<br>
+díky lásce mohla leť.
+    </div>
+  </div>
+
+</body>
+</html>
