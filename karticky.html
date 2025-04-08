@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <title>Kartičky</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      padding: 40px;
+      margin: auto;
+    }
+
+    header {
+      background-color: #8B0000;
+      padding: 25px 30px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+    }
+
+    header nav {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+    }
+
+    header nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 22px;
+      padding: 10px 20px;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+    }
+
+    header nav a:hover {
+      background-color: #a52a2a;
+    }
+
+    h1 {
+      text-align: center;
+      color: #8B0000;
+      margin-bottom: 30px;
+    }
+
+    .cards-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+      justify-items: center;
+      align-items: center;
+    }
+
+    .card {
+      width: 148.5mm;
+      height: 210mm;
+      border: 6px solid;
+      padding: 20px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      page-break-inside: avoid;
+    }
+
+    .card h2 {
+      margin-top: 0;
+      font-size: 32px;
+    }
+
+    .card p {
+      font-size: 28px;
+      margin: auto 0;
+      width: 100%;
+      text-align: center;
+    }
+
+    .orange { border-color: orange; }
+    .green { border-color: limegreen; }
+    .yellow { border-color: gold; }
+    .pink { border-color: hotpink; }
+
+    @media print {
+      body {
+        padding: 0;
+        margin: 0;
+      }
+
+      header, h1 {
+        display: none;
+      }
+
+      .cards-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        page-break-inside: avoid;
+      }
+
+      .card {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="index.html">Šifrovač</a>
+      <a href="legenda.html">Legenda</a>
+      <a href="ostatni.html">Ostatní</a>
+      <a href="karticky.html">Kartičky</a>
+    </nav>
+  </header>
+
+  <h1>Kartičky</h1>
+
+  <div class="cards-container">
+    <div class="card orange">
+      <h2>STAŽI</h2>
+      <p>A -</p>
+      <p>B -</p>
+      <p>C -</p>
+      <p>D -</p>
+    </div>
+    <div class="card green">
+      <h2>LINDA</h2>
+      <p>A -</p>
+      <p>B -</p>
+      <p>C -</p>
+      <p>D -</p>
+    </div>
+    <div class="card yellow">
+      <h2>SYLVA</h2>
+      <p>A -</p>
+      <p>B -</p>
+      <p>C -</p>
+      <p>D -</p>
+    </div>
+    <div class="card pink">
+      <h2>MARUŠKA</h2>
+      <p>A -</p>
+      <p>B -</p>
+      <p>C -</p>
+      <p>D -</p>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('keydown', function(e) {
+      if (e.key === 'p' && e.ctrlKey) {
+        e.preventDefault();
+        window.print();
+      }
+    });
+  </script>
+</body>
+</html>
