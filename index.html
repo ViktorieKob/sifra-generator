@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <title>Šifrovací dopisový generátor</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      padding: 40px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: #8B0000;
+      margin-bottom: 30px;
+    }
+
+    p {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    textarea {
+      width: 100%;
+      height: 100px;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+      margin-bottom: 15px;
+    }
+
+    button {
+      background-color: #8B0000;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-right: 10px;
+    }
+
+    button:hover {
+      background-color: #a80000;
+    }
+
+    #output {
+      margin-top: 30px;
+      font-size: 18px;
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      width: 100%;
+      display: block;
+      page-break-inside: avoid;
+    }
+
+    .symbol-line {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    img.symbol {
+      height: 50px;
+      vertical-align: middle;
+      margin: 4px 4px;
+    }
+
+    .plain-char {
+      font-size: 24px;
+      margin: 4px 6px;
+    }
+
+    @media print {
+      textarea, button {
+        display: none;
+      }
+
+      body {
+        padding: 20mm;
+      }
+
+      #output {
+        box-shadow: none;
+        padding: 0;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Šifrovací dopisový generátor</h1>
+  <p>Zadej text, který se přeloží do symbolů:</p>
+  <textarea id="inputText" placeholder="Napiš sem svůj tajný text..."></textarea><br>
+  <button onclick="encryptText()">Šifrovat</button>
+  <button onclick="clearOutput()">Vymazat</button>
+  <button onclick="window.print()">Tisk</button>
+
+  <div id="output"></div>
+
+  <script>
+    const symbolMap = {
+      A: "symboly/A.JPG",
+      B: "symboly/B.JPEG",
+      C: "symboly/C.JPEG",
+      D: "symboly/D.JPEG",
+      E: "symboly/E.JPEG",
+      F: "symboly/F.JPEG",
+      G: "symboly/G.JPEG",
+      H: "symboly/H.JPEG",
+      I: "symboly/I.JPEG",
+      J: "symboly/J.JPEG",
+      K: "symboly/K.JPEG",
+      L: "symboly/L.PNG",
+      M: "symboly/M.JPEG",
+      N: "symboly/N.JPEG",
+      O: "symboly/O.JPG",
+      P: "symboly/P.JPEG",
+      R: "symboly/R.JPEG",
+      S: "symboly/S.JPEG",
+      T: "symboly/T.JPEG",
+      U: "symboly/U.JPEG",
+      V: "symboly/V.JPEG",
+      W: "symboly/W.JPEG",
+      Y: "symboly/Y.JPEG",
+      Z: "symboly/Z.JPEG",
+      CH: "symboly/Ch.JPEG"
+    };
+
+    function encryptText() {
+      const input = document.getElementById("inputText").value.toUpperCase();
+      const outputDiv = document.getElementById("output");
+      outputDiv.innerHTML = "";
+
+      const paragraphs = input.split(/\n+/);
+      paragraphs.forEach(para => {
+        const words = para.trim().split(" ");
+        const lineDiv = document.createElement("div");
+        lineDiv.className = "symbol-line";
+
+        words.forEach(word => {
+          const span = document.createElement("span");
+          span.style.whiteSpace = "nowrap";
+          span.style.marginRight = "30px";
+
+          let i = 0;
+          while (i < word.length) {
+            let ch = word[i];
+            if (ch === "C" && word[i + 1] === "H") {
+              ch = "CH";
+              i++;
+            }
+            if (/[ÁČĆĎĚŇŘŠŤŮÝŽ]/.test(ch)) {
+              ch = ch.normalize("NFD").replace(/\p{Diacritic}/gu, "").charAt(0);
+            }
+            if (symbolMap[ch]) {
+              const img = document.createElement("img");
+              img.src = symbolMap[ch];
+              img.alt = ch;
+              img.className = "symbol";
+              span.appendChild(img);
+            } else {
+              const plain = document.createElement("span");
+              plain.className = "plain-char";
+              plain.textContent = ch;
+              span.appendChild(plain);
+            }
+            i++;
+          }
+
+          // Add underscore after each word to mark space
+          const underscore = document.createElement("span");
+          underscore.className = "plain-char";
+          underscore.textContent = "_";
+          span.appendChild(underscore);
+
+          lineDiv.appendChild(span);
+        });
+
+        outputDiv.appendChild(lineDiv);
+      });
+    }
+
+    function clearOutput() {
+      document.getElementById("output").innerHTML = "";
+      document.getElementById("inputText").value = "";
+    }
+
+    document.getElementById("inputText").addEventListener("keypress", function(e) {
+      if (e.key === "Enter" && !e.shiftKey) {
+        e.preventDefault();
+        encryptText();
+      }
+    });
+  </script>
+</body>
+</html>
