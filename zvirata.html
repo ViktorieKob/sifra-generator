@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <title>Zvířata</title>
+  <style>
+    @page {
+      margin: 0;
+      size: A4 portrait;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: white;
+      color: #333;
+    }
+
+    header {
+      background-color: #8B0000;
+      padding: 25px 30px;
+    }
+
+    header nav {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+    }
+
+    header nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 22px;
+      padding: 10px 20px;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+    }
+
+    header nav a:hover {
+      background-color: #a52a2a;
+    }
+
+    h1 {
+      text-align: center;
+      color: #8B0000;
+      margin: 20px;
+    }
+
+    .print-button {
+      display: block;
+      margin: 0 auto 20px auto;
+      background-color: #8B0000;
+      color: white;
+      border: none;
+      padding: 10px 25px;
+      font-size: 18px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .print-button:hover {
+      background-color: #a80000;
+    }
+
+    .animal-page {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      page-break-after: always;
+    }
+
+    .animal-page img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+    }
+
+    @media print {
+      header, h1, .print-button {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+
+        <a href="index.html">Šifrovač</a>
+        <a href="legenda.html">Legenda</a>
+        <a href="ostatni.html">Ostatní</a>
+        <a href="karticky.html">Kartičky</a>
+        <a href="basnicka.html">Básnička</a>
+        <a href="karticky2.html">Kartičky</a>
+      <a href="tvary.html">Tvary</a>
+
+    </nav>
+  </header>
+
+  <h1>Zvířátka</h1>
+  <button class="print-button" onclick="window.print()">Tisk</button>
+
+  <div class="animal-page"><img src="mys.png" alt="Myš"></div>
+  <div class="animal-page"><img src="kun.png" alt="Kůň"></div>
+  <div class="animal-page"><img src="hroch.png" alt="Hroch"></div>
+  <div class="animal-page"><img src="papousek.png" alt="Papoušek"></div>
+  <div class="animal-page"><img src="morče.png" alt="Morče"></div>
+  <div class="animal-page"><img src="beruška.png" alt="Beruška"></div>
+
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <title>Tvary</title>
+  <style>
+    @page {
+      margin: 0;
+      size: A4 portrait;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: white;
+      color: #333;
+    }
+
+    header {
+      background-color: #8B0000;
+      padding: 25px 30px;
+    }
+
+    header nav {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+    }
+
+    header nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 22px;
+      padding: 10px 20px;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+    }
+
+    header nav a:hover {
+      background-color: #a52a2a;
+    }
+
+    h1 {
+      text-align: center;
+      color: #8B0000;
+      margin: 20px;
+    }
+
+    .print-button {
+      display: block;
+      margin: 0 auto 20px auto;
+      background-color: #8B0000;
+      color: white;
+      border: none;
+      padding: 10px 25px;
+      font-size: 18px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .print-button:hover {
+      background-color: #a80000;
+    }
+
+    .shape-page {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      page-break-after: always;
+    }
+
+    .shape {
+      width: 80vmin;
+      height: 80vmin;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .circle {
+      border-radius: 50%;
+      background-color: blue;
+    }
+
+    .square {
+      background-color: green;
+    }
+
+    .rectangle {
+      width: 90vmin;
+      height: 45vmin;
+      background-color: hotpink;
+    }
+
+    .heart {
+      position: relative;
+      width: 200px;
+      height: 180px;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 100px;
+      height: 160px;
+      background: red;
+      border-radius: 100px 100px 0 0;
+      top: 0;
+    }
+
+    .heart::before {
+      left: 100px;
+      transform: rotate(-45deg);
+      transform-origin: 0 100%;
+    }
+
+    .heart::after {
+      left: 0;
+      transform: rotate(45deg);
+      transform-origin: 100% 100%;
+    }
+
+    .star {
+      color: gold;
+      font-size: 60vmin;
+    }
+
+    @media print {
+      header, h1, .print-button {
+        display: none;
+      }
+
+      .shape-page {
+        page-break-after: always;
+        width: 100vw;
+        height: 100vh;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+        <a href="index.html">Šifrovač</a>
+        <a href="legenda.html">Legenda</a>
+        <a href="ostatni.html">Ostatní</a>
+        <a href="karticky.html">Kartičky</a>
+        <a href="basnicka.html">Básnička</a>
+        <a href="karticky2.html">Kartičky</a>
+      <a href="tvary.html">Tvary</a>
+    </nav>
+  </header>
+
+  <h1>Tvary</h1>
+  <button class="print-button" onclick="window.print()">Tisk</button>
+
+  <div class="shape-page"><div class="shape circle"></div></div>
+  <div class="shape-page"><div class="shape square"></div></div>
+  <div class="shape-page"><div class="shape rectangle"></div></div>
+  <div class="shape-page"><div class="shape heart"></div></div>
+  <div class="shape-page"><div class="shape star">★</div></div>
+</body>
+</html>
