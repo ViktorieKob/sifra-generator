@@ -12,20 +12,41 @@
       margin: auto;
     }
 
-    h1 {
+    header {
+      background-color: #8B0000;
+      padding: 25px 30px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+    }
+
+    header nav {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+    }
+
+    header nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 22px;
+      padding: 10px 20px;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+    }
+
+    header nav a:hover {
+      background-color: #a52a2a;
+    }
+
+    h1#main-title {
       text-align: center;
       color: #8B0000;
       margin-bottom: 30px;
     }
 
-    p {
-      font-size: 18px;
-      margin-bottom: 10px;
-    }
-
-    textarea {
+    textarea, input[type="text"] {
       width: 100%;
-      height: 100px;
       padding: 10px;
       font-size: 16px;
       border: 1px solid #ccc;
@@ -79,8 +100,15 @@
       margin: 4px 6px;
     }
 
+    .custom-heading {
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
     @media print {
-      textarea, button {
+      header, #main-title, textarea, input[type="text"], button {
         display: none;
       }
 
@@ -97,8 +125,17 @@
   </style>
 </head>
 <body>
-  <h1>Šifrovací dopisový generátor</h1>
-  <p>Zadej text, který se přeloží do symbolů:</p>
+  <header>
+    <nav>
+      <a href="index.html">Šifrovač</a>
+      <a href="legenda.html">Legenda</a>
+      <a href="ostatni.html">Ostatní</a>
+    </nav>
+  </header>
+
+  <h1 id="main-title">Šifrovací dopisový generátor</h1>
+
+  <input type="text" id="customHeading" placeholder="Zadej svůj vlastní nadpis"><br>
   <textarea id="inputText" placeholder="Napiš sem svůj tajný text..."></textarea><br>
   <button onclick="encryptText()">Šifrovat</button>
   <button onclick="clearOutput()">Vymazat</button>
@@ -139,8 +176,16 @@
 
     function encryptText() {
       const input = document.getElementById("inputText").value.toUpperCase();
+      const heading = document.getElementById("customHeading").value;
       const outputDiv = document.getElementById("output");
       outputDiv.innerHTML = "";
+
+      if (heading.trim() !== "") {
+        const headingEl = document.createElement("div");
+        headingEl.className = "custom-heading";
+        headingEl.textContent = heading;
+        outputDiv.appendChild(headingEl);
+      }
 
       const paragraphs = input.split(/\n+/);
       paragraphs.forEach(para => {
@@ -160,7 +205,7 @@
               ch = "CH";
               i++;
             }
-            if (/[ÁČĆĎĚŇŘŠŤŮÝŽ]/.test(ch)) {
+            if (/[\u00C0-\u017F]/.test(ch)) {
               ch = ch.normalize("NFD").replace(/\p{Diacritic}/gu, "").charAt(0);
             }
             if (symbolMap[ch]) {
@@ -193,6 +238,7 @@
     function clearOutput() {
       document.getElementById("output").innerHTML = "";
       document.getElementById("inputText").value = "";
+      document.getElementById("customHeading").value = "";
     }
 
     document.getElementById("inputText").addEventListener("keypress", function(e) {

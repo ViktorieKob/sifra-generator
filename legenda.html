@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <title>Legenda symbolů</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      padding: 40px;
+      margin: auto;
+    }
+
+    header {
+      background-color: #8B0000;
+      padding: 25px 30px; /* zvětšeno */
+      border-radius: 8px;
+      margin-bottom: 30px;
+    }
+
+    header nav {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+    }
+
+    header nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 22px; /* větší písmo */
+      padding: 10px 20px;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+    }
+
+    header nav a:hover {
+      background-color: #a52a2a; /* změna barvy pozadí při najetí */
+    }
+
+    h1 {
+      text-align: center;
+      color: #8B0000;
+      margin-bottom: 30px;
+    }
+
+    .legend-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .legend-column {
+      flex: 1 1 200px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 12px;
+      font-size: 20px;
+    }
+
+    .legend-item img {
+      margin-left: 16px;
+      height: 50px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="index.html">Šifrovač</a>
+      <a href="legenda.html">Legenda</a>
+      <a href="ostatni.html">Ostatní</a>
+    </nav>
+  </header>
+
+  <h1>Legenda symbolů</h1>
+
+  <div class="legend-container">
+    <div class="legend-column" id="legendColumn1"></div>
+    <div class="legend-column" id="legendColumn2"></div>
+    <div class="legend-column" id="legendColumn3"></div>
+    <div class="legend-column" id="legendColumn4"></div>
+  </div>
+
+  <script>
+    const baseURL = "https://raw.githubusercontent.com/ViktorieKob/sifra-generator/main/";
+    const symbolMap = {
+      A: baseURL + "A.JPEG",
+      B: baseURL + "B.JPEG",
+      C: baseURL + "C.JPEG",
+      D: baseURL + "D.JPEG",
+      E: baseURL + "E.JPEG",
+      F: baseURL + "F.JPEG",
+      G: baseURL + "G.JPEG",
+      H: baseURL + "H.JPEG",
+      I: baseURL + "I.JPEG",
+      J: baseURL + "J.JPEG",
+      K: baseURL + "K.JPEG",
+      L: baseURL + "L.png",
+      M: baseURL + "M.JPEG",
+      N: baseURL + "N.JPEG",
+      O: baseURL + "O.jpg",
+      P: baseURL + "P.JPEG",
+      R: baseURL + "R.JPEG",
+      S: baseURL + "S.JPEG",
+      T: baseURL + "T.JPEG",
+      U: baseURL + "U.JPEG",
+      V: baseURL + "V.JPEG",
+      W: baseURL + "W.JPEG",
+      Y: baseURL + "Y.JPEG",
+      Z: baseURL + "Z.JPEG",
+      CH: baseURL + "Ch.JPEG"
+    };
+
+    window.onload = function () {
+      const keys = Object.keys(symbolMap);
+      const columns = [
+        document.getElementById("legendColumn1"),
+        document.getElementById("legendColumn2"),
+        document.getElementById("legendColumn3"),
+        document.getElementById("legendColumn4")
+      ];
+
+      keys.forEach((key, index) => {
+        const item = document.createElement("div");
+        item.className = "legend-item";
+
+        const label = document.createElement("span");
+        label.textContent = key;
+
+        const img = document.createElement("img");
+        img.src = symbolMap[key];
+        img.alt = key;
+
+        item.appendChild(label);
+        item.appendChild(img);
+
+        const colIndex = index % 4;
+        columns[colIndex].appendChild(item);
+      });
+    };
+  </script>
+</body>
+</html>
