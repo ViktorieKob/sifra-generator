@@ -48,34 +48,35 @@
     .cards-container {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 40px;
+      gap: 20px;
       justify-items: center;
       align-items: center;
     }
 
     .card {
-      width: 148.5mm;
-      height: 210mm;
+      width: 140mm;
+      height: 200mm;
       border: 6px solid;
       padding: 20px;
       box-sizing: border-box;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      align-items: center;
+      align-items: flex-start;
       page-break-inside: avoid;
     }
 
     .card h2 {
+      align-self: center;
       margin-top: 0;
       font-size: 32px;
     }
 
     .card p {
       font-size: 28px;
-      margin: auto 0;
+      margin: 12mm 0;
       width: 100%;
-      text-align: center;
+      text-align: left;
     }
 
     .orange { border-color: orange; }
@@ -83,13 +84,30 @@
     .yellow { border-color: gold; }
     .pink { border-color: hotpink; }
 
+    .print-button {
+      display: block;
+      margin: 20px auto 40px auto;
+      background-color: #8B0000;
+      color: white;
+      border: none;
+      padding: 10px 25px;
+      font-size: 18px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .print-button:hover {
+      background-color: #a80000;
+    }
+
     @media print {
       body {
         padding: 0;
         margin: 0;
       }
 
-      header, h1 {
+      header, h1, .print-button {
         display: none;
       }
 
@@ -117,6 +135,8 @@
   </header>
 
   <h1>Kartičky</h1>
+
+  <button class="print-button" onclick="window.print()">Tisk</button>
 
   <div class="cards-container">
     <div class="card orange">
