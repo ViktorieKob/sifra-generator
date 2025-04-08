@@ -95,6 +95,10 @@
       margin: 4px 4px;
     }
 
+    img.symbol[data-char="O"] {
+  height: 64px;
+}
+
     .plain-char {
       font-size: 24px;
       margin: 4px 6px;
@@ -136,7 +140,7 @@
   <h1 id="main-title">Šifrovací dopisový generátor</h1>
 
   <input type="text" id="customHeading" placeholder="Zadej svůj vlastní nadpis"><br>
-  <textarea id="inputText" placeholder="Napiš sem svůj tajný text..."></textarea><br>
+  <textarea id="inputText" placeholder="Napiš sem svůj tajný text..." rows="5"></textarea><br>
   <button onclick="encryptText()">Šifrovat</button>
   <button onclick="clearOutput()">Vymazat</button>
   <button onclick="window.print()">Tisk</button>
@@ -205,7 +209,7 @@
               ch = "CH";
               i++;
             }
-            if (/[\u00C0-\u017F]/.test(ch)) {
+            if (/[ÁČĆĎĚŇŘŠŤŮÝŽ]/.test(ch)) {
               ch = ch.normalize("NFD").replace(/\p{Diacritic}/gu, "").charAt(0);
             }
             if (symbolMap[ch]) {
@@ -213,6 +217,7 @@
               img.src = symbolMap[ch];
               img.alt = ch;
               img.className = "symbol";
+              img.setAttribute("data-char", ch);
               span.appendChild(img);
             } else {
               const plain = document.createElement("span");
@@ -240,13 +245,6 @@
       document.getElementById("inputText").value = "";
       document.getElementById("customHeading").value = "";
     }
-
-    document.getElementById("inputText").addEventListener("keypress", function(e) {
-      if (e.key === "Enter" && !e.shiftKey) {
-        e.preventDefault();
-        encryptText();
-      }
-    });
   </script>
 </body>
 </html>
