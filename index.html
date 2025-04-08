@@ -107,32 +107,34 @@
   <div id="output"></div>
 
   <script>
+    const baseURL = "https://raw.githubusercontent.com/ViktorieKob/sifra-generator/main/";
+
     const symbolMap = {
-      A: "symboly/A.JPG",
-      B: "symboly/B.JPEG",
-      C: "symboly/C.JPEG",
-      D: "symboly/D.JPEG",
-      E: "symboly/E.JPEG",
-      F: "symboly/F.JPEG",
-      G: "symboly/G.JPEG",
-      H: "symboly/H.JPEG",
-      I: "symboly/I.JPEG",
-      J: "symboly/J.JPEG",
-      K: "symboly/K.JPEG",
-      L: "symboly/L.PNG",
-      M: "symboly/M.JPEG",
-      N: "symboly/N.JPEG",
-      O: "symboly/O.JPG",
-      P: "symboly/P.JPEG",
-      R: "symboly/R.JPEG",
-      S: "symboly/S.JPEG",
-      T: "symboly/T.JPEG",
-      U: "symboly/U.JPEG",
-      V: "symboly/V.JPEG",
-      W: "symboly/W.JPEG",
-      Y: "symboly/Y.JPEG",
-      Z: "symboly/Z.JPEG",
-      CH: "symboly/Ch.JPEG"
+      A: baseURL + "Ajpg",
+      B: baseURL + "B.JPEG",
+      C: baseURL + "C.JPEG",
+      D: baseURL + "D.JPEG",
+      E: baseURL + "E.JPEG",
+      F: baseURL + "F.JPEG",
+      G: baseURL + "G.JPEG",
+      H: baseURL + "H.JPEG",
+      I: baseURL + "I.JPEG",
+      J: baseURL + "J.JPEG",
+      K: baseURL + "K.JPEG",
+      L: baseURL + "L.png",
+      M: baseURL + "M.JPEG",
+      N: baseURL + "N.JPEG",
+      O: baseURL + "O.JPG",
+      P: baseURL + "P.JPEG",
+      R: baseURL + "R.JPEG",
+      S: baseURL + "S.JPEG",
+      T: baseURL + "T.JPEG",
+      U: baseURL + "U.JPEG",
+      V: baseURL + "V.JPEG",
+      W: baseURL + "W.JPEG",
+      Y: baseURL + "Y.JPEG",
+      Z: baseURL + "Z.JPEG",
+      CH: baseURL + "Ch.JPEG"
     };
 
     function encryptText() {
@@ -176,7 +178,6 @@
             i++;
           }
 
-          // Add underscore after each word to mark space
           const underscore = document.createElement("span");
           underscore.className = "plain-char";
           underscore.textContent = "_";
