@@ -4,19 +4,27 @@
   <meta charset="UTF-8">
   <title>Kartičky</title>
   <style>
+    @page {
+      margin: 0;
+      size: A4 portrait;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+    }
+
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #f9f9f9;
       color: #333;
-      padding: 40px;
-      margin: auto;
     }
 
     header {
       background-color: #8B0000;
       padding: 25px 30px;
-      border-radius: 8px;
-      margin-bottom: 30px;
     }
 
     header nav {
@@ -42,51 +50,12 @@
     h1 {
       text-align: center;
       color: #8B0000;
-      margin-bottom: 30px;
+      margin: 20px;
     }
-
-    .cards-container {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-      justify-items: center;
-      align-items: center;
-    }
-
-    .card {
-      width: 140mm;
-      height: 200mm;
-      border: 6px solid;
-      padding: 20px;
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: flex-start;
-      page-break-inside: avoid;
-    }
-
-    .card h2 {
-      align-self: center;
-      margin-top: 0;
-      font-size: 32px;
-    }
-
-    .card p {
-      font-size: 28px;
-      margin: 12mm 0;
-      width: 100%;
-      text-align: left;
-    }
-
-    .orange { border-color: orange; }
-    .green { border-color: limegreen; }
-    .yellow { border-color: gold; }
-    .pink { border-color: hotpink; }
 
     .print-button {
       display: block;
-      margin: 20px auto 40px auto;
+      margin: 0 auto 20px auto;
       background-color: #8B0000;
       color: white;
       border: none;
@@ -101,23 +70,67 @@
       background-color: #a80000;
     }
 
-    @media print {
-      body {
-        padding: 0;
-        margin: 0;
-      }
+    .cards-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      height: calc(100vh - 150px);
+      width: 100vw;
+      padding: 0;
+      margin: 0;
+    }
 
+    .card {
+      border: 30px solid;
+      padding: 20px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    .card h2 {
+      margin-top: 0;
+      font-size: 32px;
+    }
+
+    .columns {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .column {
+      width: 48%;
+    }
+
+    .column p {
+      font-size: 20px;
+      margin: 18px 0;
+      border-bottom: 1px dashed #ccc;
+    }
+
+    .purple { border-color: mediumorchid; }
+    .red { border-color: crimson; }
+    .yellow { border-color: gold; }
+    .orange { border-color: darkorange; }
+
+    @media print {
       header, h1, .print-button {
         display: none;
       }
 
       .cards-container {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+        height: 100vh;
+        width: 100vw;
         page-break-inside: avoid;
       }
 
       .card {
+        border-width: 30px;
         break-inside: avoid;
         page-break-inside: avoid;
       }
@@ -132,51 +145,62 @@
       <a href="ostatni.html">Ostatní</a>
       <a href="karticky.html">Kartičky</a>
       <a href="basnicka.html">Básnička</a>
+      <a href="karticky2.html">Kartičky</a>
+
     </nav>
   </header>
 
   <h1>Kartičky</h1>
-
   <button class="print-button" onclick="window.print()">Tisk</button>
 
   <div class="cards-container">
-    <div class="card orange">
-      <h2>STAŽI</h2>
-      <p>A -</p>
-      <p>B -</p>
-      <p>C -</p>
-      <p>D -</p>
+    <div class="card purple">
+      <h2>STÁZI</h2>
+      <div class="columns">
+        <div class="column">
+          <p>A -</p><p>B -</p><p>C -</p><p>D -</p><p>E -</p><p>F -</p><p>G -</p><p>H -</p><p>I -</p><p>J -</p><p>K -</p><p>L -</p><p>M -</p>
+        </div>
+        <div class="column">
+          <p>N -</p><p>O -</p><p>P -</p><p>R -</p><p>S -</p><p>T -</p><p>U -</p><p>V -</p><p>W -</p><p>Y -</p><p>Z -</p><p>CH -</p>
+        </div>
+      </div>
     </div>
-    <div class="card green">
+
+    <div class="card red">
       <h2>LINDA</h2>
-      <p>A -</p>
-      <p>B -</p>
-      <p>C -</p>
-      <p>D -</p>
+      <div class="columns">
+        <div class="column">
+          <p>A -</p><p>B -</p><p>C -</p><p>D -</p><p>E -</p><p>F -</p><p>G -</p><p>H -</p><p>I -</p><p>J -</p><p>K -</p><p>L -</p><p>M -</p>
+        </div>
+        <div class="column">
+          <p>N -</p><p>O -</p><p>P -</p><p>R -</p><p>S -</p><p>T -</p><p>U -</p><p>V -</p><p>W -</p><p>Y -</p><p>Z -</p><p>CH -</p>
+        </div>
+      </div>
     </div>
+
     <div class="card yellow">
       <h2>SYLVA</h2>
-      <p>A -</p>
-      <p>B -</p>
-      <p>C -</p>
-      <p>D -</p>
+      <div class="columns">
+        <div class="column">
+          <p>A -</p><p>B -</p><p>C -</p><p>D -</p><p>E -</p><p>F -</p><p>G -</p><p>H -</p><p>I -</p><p>J -</p><p>K -</p><p>L -</p><p>M -</p>
+        </div>
+        <div class="column">
+          <p>N -</p><p>O -</p><p>P -</p><p>R -</p><p>S -</p><p>T -</p><p>U -</p><p>V -</p><p>W -</p><p>Y -</p><p>Z -</p><p>CH -</p>
+        </div>
+      </div>
     </div>
-    <div class="card pink">
+
+    <div class="card orange">
       <h2>MARUŠKA</h2>
-      <p>A -</p>
-      <p>B -</p>
-      <p>C -</p>
-      <p>D -</p>
+      <div class="columns">
+        <div class="column">
+          <p>A -</p><p>B -</p><p>C -</p><p>D -</p><p>E -</p><p>F -</p><p>G -</p><p>H -</p><p>I -</p><p>J -</p><p>K -</p><p>L -</p><p>M -</p>
+        </div>
+        <div class="column">
+          <p>N -</p><p>O -</p><p>P -</p><p>R -</p><p>S -</p><p>T -</p><p>U -</p><p>V -</p><p>W -</p><p>Y -</p><p>Z -</p><p>CH -</p>
+        </div>
+      </div>
     </div>
   </div>
-
-  <script>
-    window.addEventListener('keydown', function(e) {
-      if (e.key === 'p' && e.ctrlKey) {
-        e.preventDefault();
-        window.print();
-      }
-    });
-  </script>
 </body>
 </html>
